@@ -7,6 +7,7 @@ return array (
           [26]\\d{5,8}|
           9(?:
             [258]|
+            3\\d|
             4\\d{1,2}|
             [679]\\d?
           )\\d{6}
@@ -98,6 +99,7 @@ return array (
           17[01]\\d{4}|
           9(?:
             2[0-4]|
+            3[136]\\d|
             4(?:
               0[0-4]\\d|
               [1379]\\d|
@@ -135,6 +137,42 @@ return array (
     'NationalNumberPattern' => 'NA',
     'PossibleNumberPattern' => 'NA',
     'ExampleNumber' => '',
+  ),
+  'personalNumber' => 
+  array (
+    'NationalNumberPattern' => 'NA',
+    'PossibleNumberPattern' => 'NA',
+    'ExampleNumber' => '',
+  ),
+  'voip' => 
+  array (
+    'NationalNumberPattern' => '1333\\d{4}',
+    'PossibleNumberPattern' => '\\d{8}',
+    'ExampleNumber' => '13331234',
+  ),
+  'pager' => 
+  array (
+    'NationalNumberPattern' => 'NA',
+    'PossibleNumberPattern' => 'NA',
+    'ExampleNumber' => '',
+  ),
+  'uan' => 
+  array (
+    'NationalNumberPattern' => 'NA',
+    'PossibleNumberPattern' => 'NA',
+    'ExampleNumber' => '',
+  ),
+  'voicemail' => 
+  array (
+    'NationalNumberPattern' => 'NA',
+    'PossibleNumberPattern' => 'NA',
+    'ExampleNumber' => '',
+  ),
+  'emergency' => 
+  array (
+    'NationalNumberPattern' => '199',
+    'PossibleNumberPattern' => '\\d{3}',
+    'ExampleNumber' => '199',
   ),
   'noInternationalDialling' => 
   array (
@@ -222,7 +260,7 @@ return array (
       array (
         0 => '
             9(?:
-              [25-9]|
+              [235-9]|
               4[13789]
             )
           ',

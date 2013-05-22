@@ -2,6 +2,8 @@
 
 namespace libphonenumber;
 
+use Exception;
+
 /**
  * Utility for international phone numbers. Functionality includes formatting, parsing and
  * validation.
@@ -587,7 +589,7 @@ class PhoneNumberUtil {
 		}
 		// If a country doesn't use a national prefix, and this number doesn't have an Italian leading
 		// zero, we assume it is a closed dialling plan with no area codes.
-		if (!$metadata->hasNationalPrefix() && !$metadata->isItalianLeadingZero()) {
+		if (!$metadata->hasNationalPrefix() && !$number->isItalianLeadingZero()) {
 			return 0;
 		}
 
@@ -2342,27 +2344,25 @@ class PhoneNumberUtil {
 			return PhoneNumberType::TOLL_FREE;
 		}
 
-		/*
-		 * @todo Implement other phone desc
+
 		  if ($this->isNumberMatchingDesc($nationalNumber, $metadata->getSharedCost())) {
-		  return PhoneNumberType::SHARED_COST;
+		    return PhoneNumberType::SHARED_COST;
 		  }
 		  if ($this->isNumberMatchingDesc($nationalNumber, $metadata->getVoip())) {
-		  return PhoneNumberType::VOIP;
+		    return PhoneNumberType::VOIP;
 		  }
 		  if ($this->isNumberMatchingDesc($nationalNumber, $metadata->getPersonalNumber())) {
-		  return PhoneNumberType::PERSONAL_NUMBER;
+		    return PhoneNumberType::PERSONAL_NUMBER;
 		  }
 		  if ($this->isNumberMatchingDesc($nationalNumber, $metadata->getPager())) {
-		  return PhoneNumberType::PAGER;
+		    return PhoneNumberType::PAGER;
 		  }
 		  if ($this->isNumberMatchingDesc($nationalNumber, $metadata->getUan())) {
-		  return PhoneNumberType::UAN;
+		    return PhoneNumberType::UAN;
 		  }
 		  if ($this->isNumberMatchingDesc($nationalNumber, $metadata->getVoicemail())) {
-		  return PhoneNumberType::VOICEMAIL;
+		    return PhoneNumberType::VOICEMAIL;
 		  }
-		 */
 		$isFixedLine = $this->isNumberMatchingDesc($nationalNumber, $metadata->getFixedLine());
 		if ($isFixedLine) {
 			if ($metadata->isSameMobileAndFixedLinePattern()) {
